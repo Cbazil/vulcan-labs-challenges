@@ -1,0 +1,115 @@
+mocha.setup('bdd');
+var assert = chai.assert;
+
+const reverse = (input) => {
+  // your code here
+  input = input.split('')
+  input = input.reverse();
+  input = input.join('');
+  return input;
+}
+
+describe('#reverse', function() {
+  it('should reverse abcde edcba', function() {
+    assert.deepEqual(reverse("abcde"), "edcba");
+  });
+
+  it('should reverse Hello elder price! !ecirp redle olleH', function() {
+    assert.deepEqual(reverse("Hello elder price!"), "!ecirp redle olleH");
+  });
+});
+
+
+
+let palindrome = (input) => {
+  // your code here
+//      var len = input.length;
+//     var mid = Math.floor(len/2);
+
+//     for ( var i = 0; i < mid; i++ ) {
+//         if (input[i] !== input[len - 1 - i]) {
+//             return false;
+//         }
+//     }
+//   return true;
+   // if (input == input.split('').reverse().join('')) {
+   //   return true;
+   // } else {
+   //   return false;
+   // }
+
+ return input.toLowerCase() == input.toLowerCase().split("").reverse().join("") ? true : false;
+}
+
+describe('#palindrome', function() {
+  it('return true for a valid palindrome', function() {
+    assert.deepEqual(palindrome("Rats live on no evil star"), true);
+  });
+
+  it('return true for a famous  palindrome', function() {
+    assert.deepEqual(palindrome("Able was I ere I saw Elba"), true);
+  });
+
+
+  it('return false for not a palindrome', function() {
+    assert.deepEqual(palindrome("Not a palindrome"), false);
+  });
+});
+
+
+
+const people = [
+  { name: "James", age: 21, occupation: "Office Worker" },
+  { name: "Ann", age: 32, occupation: "Office Worker" },
+  { name: "Julie", age: 21, occupation: "Civil Service" },
+  { name: "Rob", age: 18, occupation: "Industrial Supplier" },
+];
+
+const group = (items, key) => {
+  // your code here
+
+  return {};
+}
+
+describe('#group', function() {
+  it('should group a list of people by occupation', function() {
+      assert.deepEqual(group(people, 'occupation'), {
+        "Office Worker": [
+          { name: "James", age: 21, occupation: "Office Worker" },
+          { name: "Ann", age: 32, occupation: "Office Worker" },
+        ],
+        "Civil Service": [
+          { name: "Julie", age: 21, occupation: "Civil Service" },
+        ],
+        "Industrial Supplier": [
+          { name: "Rob", age: 18, occupation: "Industrial Supplier" },
+        ]
+      })
+  });
+  it('should group a list of people by age', function() {
+      assert.deepEqual(group(people, 'age'), {
+        18: [
+          { name: "Rob", age: 18, occupation: "Industrial Supplier" },
+        ],
+        21: [
+          { name: "James", age: 21, occupation: "Office Worker" },
+          { name: "Julie", age: 21, occupation: "Civil Service" },
+        ],
+        32: [
+          { name: "Ann", age: 32, occupation: "Office Worker" },
+        ],
+      })
+   });
+  
+  it('what if the list is empty', function() {
+      assert.deepEqual(group([], 'age'), {})
+   });
+  it('what if the list is null', function() {
+      assert.deepEqual(group(null, 'age'), {})
+   });
+  it('BONUS: what if the list is stupid long', function() {
+      assert.isNotNull(group(new Array(1000000).fill({ name: "Rob", age: 18, occupation: "Industrial Supplier" }), 'age'))
+   });
+});
+
+mocha.run();
