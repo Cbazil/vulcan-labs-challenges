@@ -67,7 +67,8 @@ const people = [
 
 const group = (items, key) => {
   // your code here
-
+  const group = {};
+  
   return {};
 }
 
@@ -100,7 +101,7 @@ describe('#group', function() {
         ],
       })
    });
-  
+
   it('what if the list is empty', function() {
       assert.deepEqual(group([], 'age'), {})
    });
