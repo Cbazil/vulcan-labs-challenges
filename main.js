@@ -23,15 +23,7 @@ describe('#reverse', function() {
 
 let palindrome = (input) => {
   // your code here
-//      var len = input.length;
-//     var mid = Math.floor(len/2);
 
-//     for ( var i = 0; i < mid; i++ ) {
-//         if (input[i] !== input[len - 1 - i]) {
-//             return false;
-//         }
-//     }
-//   return true;
    // if (input == input.split('').reverse().join('')) {
    //   return true;
    // } else {
@@ -67,9 +59,18 @@ const people = [
 
 const group = (items, key) => {
   // your code here
-  const group = {};
-  
-  return {};
+
+	const group = {};
+
+  items.forEach(item => {
+  	group[item[key]] = [];
+  });
+
+  items.forEach(item => {
+  	group[item[key]].push(item);
+  });
+
+  return group;
 }
 
 describe('#group', function() {
