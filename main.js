@@ -24,13 +24,13 @@ describe('#reverse', function() {
 let palindrome = (input) => {
   // your code here
 
-   // if (input == input.split('').reverse().join('')) {
-   //   return true;
-   // } else {
-   //   return false;
-   // }
+   if (input.toLowerCase() == input.toLowerCase().split('').reverse().join('')) {
+     return true;
+   } else {
+     return false;
+   }
 
- return input.toLowerCase() == input.toLowerCase().split("").reverse().join("") ? true : false;
+//  return input.toLowerCase() == input.toLowerCase().split("").reverse().join("") ? true : false;
 }
 
 describe('#palindrome', function() {
